@@ -11,5 +11,21 @@
  */
 
 int main(void) {
-  printf("\f");
+  printf("\a");
+  printf("\e");
+  printf("\v");
+
+  // Error: No following hex digits
+  // printf("\u");
+
+  // Unknown escape sequences
+  printf("\h");
+  printf("\p");
+  printf("\y");
+  printf("\m");
+  printf("\w");
+  printf("\q");
+  printf("\m");
+  printf("\9");
+  printf("\l");
 }
