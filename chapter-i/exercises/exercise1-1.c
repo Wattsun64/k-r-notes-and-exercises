@@ -7,4 +7,15 @@
 
 int main(void) {
   printf("hello world\n");
+
+  // Print empty string
+  printf("");
+
+  // Error: Missing terminating character
+  printf("hello
+  ");
+
+  // Error: Too few arguments to function call, at least one expected
+  printf();
+
 }
