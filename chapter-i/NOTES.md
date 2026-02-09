@@ -7,7 +7,7 @@ cc hello.c
 
 Note: the `gcc` compiler can be used as well:
 ```
-gcc -o hello hello.c
+gcc hello.c
 ```
 
 The `cc` command is a generic command name for the system's default C compiler, while `gcc` is the specific command for the **GNU C Compiler** that is part of the broader **GNU Compiler Collection (GCC)** suite.
