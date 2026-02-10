@@ -160,3 +160,70 @@ Width and precision can be omitted from a specification: `%6f` indicates that th
 ```
 
 Among other specifications, `printf` recognizes `%o` for `octal`, `%x` for `hexadecimal`, `%c` for `character`, `%s` for `character string`, and `%%` for `%` itself.
+
+## 1.3 The For Statement
+
+The `while` loop is a fantastic option for iterative loops. Another good option is the `for` loop. Here is the **Fahrenheit-Celsius** program written using the `for` loop:
+```
+#include <stdio.h>
+
+int main(void) {
+  int fahr;
+
+    for (fahr = 0; fahr <= 300; fahr = fahr + 20)
+      printf("%3d %6.1f\n", fahr, (5.0/9.0) * (fahr-32));
+}
+```
+
+The output of the program is the same as the one written with a `while` loop, but looks *quite* different.
+
+The biggest difference is the removal of the majority of the previously declared variables (i.e. `celsius`, `lower`, `upper`, and `step`). Also notice that `fahr` is once again an `int` and not a `float`, with `lower`, `upper`, and the `step` being converted to *constants* within the `for` statement. The temperature conversion formula has been moved as the third argument to `printf`, as opposed to previously being a separate assignment statement.
+
+The change of making the conversion formula can be thought of as a general rule:
+> In any context where it is permissible to use the value of a variable of some type, you can use a more complicated expression of that type
+
+An example of the above quote is the use of the conversion formula as the third argument to `printf`, as within the formatted string the `float` declaration `%6.1f` expects there to be `float` number, the expression `((5.0/9.0)*(fahr-32))` satisfies the expectation, and follows the *general rule*.
+
+Think of this rule as a way of forgoing excessive amounts of typing, and writing statements/declarations when necessary. Using the example of the updated temperature conversion program, we pass the conversion formula as a way of *simplifying* the program, and passing the formula as an argument shows intention.
+
+The choice between `while` and `for` are arbitrary, based on which seems clearer. The `for` loop is usually appropriate for loops in which initialization and increment are single statements, and logically related, as it is more compact than `while`. Thus keeping the loop control statement together in one place.
+
+## 1.4 Symbolic Constants
+
+Another good general rule to follow is:
+> It is bad practice to bury "magic number"
+
+Using the temperature conversion program, the numbers 300 and 20 convey little information to someone who might have to read the program later on in the future, making them hard to change in a systematic way.
+
+One way to deal with *magic numbers* is to give them meaningful names. Using the `#define` line allows developers to define a *symbolic name* or *symbolic constant* to be a particular string of characters:
+```
+#define name <replacement text>
+```
+
+This allows for developers to see any occurrence of `name` (not in quotes and not part of another name) and know that it will be replaced by the corresponding *replacement text*.
+
+Note: the *replacement text* can be any sequence of characters, and is not limited to only numbers.
+
+Updating the conversion with constants could look like:
+```
+#include <stdio.h>
+
+#define LOWER 0
+#define UPPER 300
+#define STEP 20
+
+int main(void) {
+  int fahr;
+  for (fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP)
+    printf("%3d°F %6.1f°C\n", fahr, ((5.0/9.0) * (fahr-32)));
+}
+```
+
+The values of `LOWER`, `UPPER`, and `STEP` are now symbolic constants, and not variables, as they do not appear in declarations.
+
+Symbolic constant names are conventionally written in upper case as to make them readily distinguished from lower case variable names.
+
+Note: there is no semicolon `;` at the end of the `#define` line.
+
+## 1.5 Character Input & Output
+
