@@ -5,11 +5,6 @@
  */
 
 int main(void) {
-  int c;
-  while ((c = getchar() != EOF)) {
-    if (c == 0)
-      putchar('0');
-    else
-      putchar('1');
-  }
+  printf("getchar() != EOF: %d\n", getchar() != EOF);
+  printf("getchar() != EOF: %d\n", getchar() != EOF);
 }
