@@ -6,8 +6,8 @@ Here is a bare-bones version of the UNIX program `wc`:
 ```
 #include <stdio.h>
 
-#define IN 1    /* inside a word */
-#define OUT 0   /* outside a word */
+#define IN  1    /* inside a word */
+#define OUT 0    /* outside a word */
 
 /* count lines, words, and characters in input */
 int main(void) {
