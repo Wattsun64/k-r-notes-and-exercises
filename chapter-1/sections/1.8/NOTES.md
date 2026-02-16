@@ -52,7 +52,7 @@ Here is an example of the above explanations, using an updated version of the `p
 
 The parameter `n` is used as a *temporary variable*, and is counted down (a `for` loop that runs backwards) until it becomes zero; there is no longer a need for the variable `i`. Whatever is done to `n` ***inside*** `power` has no effect on the argument that `power` was originally called with (i.e. as per the explanation above).
 
-When necessary, it is possible to arrange for a function to modify a variable in a calling routine (called function). This requires the caller to provide the *address* of the variable to be set (technically a *pointer* to the variable), and the called function must declare the parameter to be a *pointer* and access the variable indirectly through it.
+When necessary, it is possible to arrange for a function to modify a variable in a calling routine (called function). This requires the caller to provide the *address* of the variable to be set (technically a *pointer* to the variable), and the called function <u>***must***</u> declare the parameter to be a *pointer* and access the variable indirectly through it.
 
 The above statement is different for `arrays`. When the name of an array is used as an argument, the value passed to the function ***is*** the location/address of the beginning of the array - there is no copying of array elements.
 
