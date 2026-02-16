@@ -5,7 +5,7 @@ A `function` is equivalent to a subroutine, a series of commands to execute in t
 > With properly designed functions, it is possible to ignore *how* a job is done; knowing *what* is done is sufficient.
 
 To illustrate creating, and executing a function, take for example that C does not provide any exponentiation operator such as `**` provided by other languages to achieve exponential computation. A potential solution could be creating a `power(m, n)` to raise an integer (`m`) to a positive integer power (`n`):
-```
+```c
   #include <stdio.h>
 
   int power(int m, int n);
@@ -41,7 +41,7 @@ A function definition has this form:
 Function definitions can appear in any order, and in one source file or several, although no function can be split between files.
 
 The first line of `power` itself:
-```
+```c
   int power(int base, int n)
 ```
 
@@ -59,14 +59,14 @@ Take notice that in the `main` program, there is a `return` statement at the end
 Typically, a return value of `0` implies *normal termination*; ***non-zero*** values signal unusual or erroneous termination conditions.
 
 The declaration:
-```
+```c
   int power(int m, int n);
 ```
 
 Just before `main` says that `power` is a function that expects two `int` arguments,and returns an `int`. This declaration, which is called a *function prototype*, has to agree with the definition and uses of `power`. An error will occur if the definition of a function or *any* uses of it do **not** agree with its prototype (should one be declared).
 
 Take note that *function prototype* parameter names do not need to mirror the full function declaration. Also, for *function prototypes*, parameter names are *optional*. Meaning the *function prototype* for `power` could have been written as:
-```
+```c
   int power(int, int);
 ```
 

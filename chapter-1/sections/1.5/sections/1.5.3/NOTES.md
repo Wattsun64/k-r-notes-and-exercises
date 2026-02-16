@@ -1,19 +1,19 @@
 ## 1.5.3 Line Counting
 
 Here is a sample program for counting input lines:
-```
-#include <stdio.h>
+```c
+  #include <stdio.h>
 
-int main(void) {
-  int c, nl;
+  int main(void) {
+    int c, nl;
 
-  nl = 0;
-  while ((c = getchar()) != EOF)
-    if (c == '\n')
-      ++nl;
-  printf("%d\n", nl);
+    nl = 0;
+    while ((c = getchar()) != EOF)
+      if (c == '\n')
+        ++nl;
+    printf("%d\n", nl);
 
-}
+  }
 ```
 
 As mentioned in previous sections, the standard library ensures that an input text stream appears as a *sequence of lines*, each terminated by a newline (`\n`).

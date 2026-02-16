@@ -1,15 +1,15 @@
 ## 1.3 The For Statement
 
 The `while` loop is a fantastic option for iterative loops. Another good option is the `for` loop. Here is the **Fahrenheit-Celsius** program written using the `for` loop:
-```
-#include <stdio.h>
+```c
+  #include <stdio.h>
 
-int main(void) {
-  int fahr;
+  int main(void) {
+    int fahr;
 
-    for (fahr = 0; fahr <= 300; fahr = fahr + 20)
-      printf("%3d %6.1f\n", fahr, (5.0/9.0) * (fahr-32));
-}
+      for (fahr = 0; fahr <= 300; fahr = fahr + 20)
+        printf("%3d %6.1f\n", fahr, (5.0/9.0) * (fahr-32));
+  }
 ```
 
 The output of the program is the same as the one written with a `while` loop, but looks *quite* different.

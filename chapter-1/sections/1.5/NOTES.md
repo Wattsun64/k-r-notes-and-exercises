@@ -7,15 +7,15 @@ A *text stream* is a sequence of characters divided into lines; each line consis
 The standard library (`<stdio.h>`) provides several functions for reading and writing one character at a time. The simplest of these functions are `getchar` and `putchar`.
 
 Each time `getchar` is called, the function reads the *next input character* from a text stream, and returns that character as its value. An example of this:
-```
-c = getchar();
+```c
+  c = getchar();
 ```
 
 The variable `c` contains the next character of input;
 
 The function `putchar` *prints* a character each time it is called:
-```
-putchar(c)
+```c
+  putchar(c)
 ```
 
 The above example prints the contents of the *integer* variable `c` as a character, usually to a display of sorts.

@@ -3,9 +3,9 @@
 This sections program will use the formula `°C = (5/9)(°F-32)` to print a table of Fahrenheit temperatures and their centigrade or Celsius equivalents.
 
 In the example program, the two lines:
-```
-/* print Fahrenheit-Celsius table
-    for fahr = 0, 20, ..., 300 */
+```c
+  /* print Fahrenheit-Celsius table
+      for fahr = 0, 20, ..., 300 */
 ```
 
 Represent a comment. Any characters between `/*` and `*/` are ignored by the compiler.
@@ -27,8 +27,8 @@ C provides several other basic data types besides `int` and `float`, including:
 The sizes of the above types are also machine-dependent. Other types provided by C are *arrays*, *structures*, and *unions*. All types can have dedicated *pointers*, and finally *functions* that can return them.
 
 The `printf` function is a general-purpose output formatting function. Its first argument is a string of characters to be printed. Any `%` construction will be substituted (with the provided format) with the arguments provided:
-```
-printf("%d\t%d\n", fahr, celsius);
+```c
+  printf("%d\t%d\n", fahr, celsius);
 ```
 
 The corresponding arguments to `printf` *MUST* match the up properly by number position, and type. Otherwise the wrong information will be displayed.
@@ -43,44 +43,44 @@ List of `%` constructors:
 The behavior of `printf` is defined in the **ANSI** standard.
 
 Augmenting any `%` constructor with an integer will dictate the rendered items width:
-```
-printf("%3d\t%6d\n", farh, celsius);
+```c
+  printf("%3d\t%6d\n", farh, celsius);
 ```
 
 Will print the first digit at a width of three digits wide, and the second digit as six digits wide.
 
 Something to take note of with the arithmetic logic used for the temperature conversion:
-```
-celsius = 5 * (fahr-32) / 9;
+```c
+  celsius = 5 * (fahr-32) / 9;
 ```
 
 Is that the conversion is done with *integer arithmetic*, which makes the Celsius temperatures not accurate. An example of this is `0°F` is actually about `-17.8°C` not `-17`.
 
 In order to get a more accurate temperature reading the conversion should be made with *floating-point arithmetic*. The updated conversion formula will look like:
-```
-celsius = (5.0/9.0) * (fahr-32.0);
+```c
+  celsius = (5.0/9.0) * (fahr-32.0);
 ```
 
 Which is similar to the prior conversion, with a few differences. The updated program looks like:
-```
-#include <stdio.h>
+```c
+  #include <stdio.h>
 
-int main(void) {
-  float fahr, celsius;
-  int lower, upper, step;
+  int main(void) {
+    float fahr, celsius;
+    int lower, upper, step;
 
-  lower = 0;
-  upper = 300;
-  step = 30;
+    lower = 0;
+    upper = 300;
+    step = 30;
 
-  fahr = lower;
-  while (fahr <= upper) {
-    celsius = (5.0/9.0) * (fahr-32);
-    printf("%3.0f\t%6.1f\n", fahr, celsius);
-    fahr = fahr + step;
+    fahr = lower;
+    while (fahr <= upper) {
+      celsius = (5.0/9.0) * (fahr-32);
+      printf("%3.0f\t%6.1f\n", fahr, celsius);
+      fahr = fahr + step;
+    }
+    return;
   }
-  return;
-}
 ```
 
 The conversion formula is written in a natural way, and more accurate. In the prior conversion, using `5/9` would have resulted in `0` as both `5` and `9` are considered `ints`, and not `floats`, thus resulting in a truncated answer of `0`.
@@ -92,13 +92,13 @@ If an arithmetic operator has integer operands, an *integer operation* is perfor
 Writing floating-point constants with explicit decimal points, even when the decimal is zero, can indicate the numbers purpose for the sake or readability.
 
 Even in the assignment:
-```
+```c
 fahr = lower
 ```
 
 And the test:
-```
-while (fahr <= upper)
+```c
+  while (fahr <= upper)
 ```
 
 Convert the `int` to a `float` before either operation is complete.

@@ -3,7 +3,7 @@
 In C, all function arguments are passed *by value*. This means that the called function is given the values of its arguments in temporary variables rather than the originals.
 
 For example:
-```
+```c
   #include <stdio.h>
 
   int power (int base, int n) {
@@ -23,12 +23,12 @@ For example:
 ```
 
 The line in which `printf` is called, in conjunction with two `power` calls:
-```
+```c
   printf("%d %d %d\n", i, power(2, i), power(-3, i));
 ```
 
 When `i` is passed to both `power` calls, the value of `i` is the passed argument, **not** the original `i` variable:
-```
+```c
   /* assume i = 3 */
   printf("%d %d %d\n", i, power(2, 3), power(-3, 3));
 ```
@@ -38,7 +38,7 @@ Which means, any manipulation made within `power` to the passed `n` parameters, 
 > Call by value is an asset, however, not a liability. It usually leads to more compact programs with fewer extraneous variables, because parameters can be treated as conveniently initialized local variables in the called routine.
 
 Here is an example of the above explanations, using an updated version of the `power` function:
-```
+```c
   #include<stdio.h>
 
   /* power: raise base to n-th power; n>=0; version 2*/

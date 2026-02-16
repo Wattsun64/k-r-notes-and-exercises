@@ -1,33 +1,33 @@
 ## Arrays
 
 Here is an example program that counts the number of occurrences of each digit, white space characters, and all other characters:
-```
-#include <stdio.h>
+```c
+  #include <stdio.h>
 
-/* count digits, white space, others */
+  /* count digits, white space, others */
 
-int main(void) {
-  int c, i, nwhite, nother;
-  int ndigit[10];
+  int main(void) {
+    int c, i, nwhite, nother;
+    int ndigit[10];
 
-  nwhite = nother = 0;
-  for (int i = 0; i < 10; i++)
-    ndigit[i] = 0;
+    nwhite = nother = 0;
+    for (int i = 0; i < 10; i++)
+      ndigit[i] = 0;
 
-  while ((c = getchar()) != EOF)
-    if (c >= '0' && c <= '9')
-      ++ndigit[c - '0'];
-    else if (c == ' ' || c == '\n' || c == '\t')
-      ++nwhite;
-    else
-      ++nother;
+    while ((c = getchar()) != EOF)
+      if (c >= '0' && c <= '9')
+        ++ndigit[c - '0'];
+      else if (c == ' ' || c == '\n' || c == '\t')
+        ++nwhite;
+      else
+        ++nother;
 
-  printf("digits =");
-  for (int i = 0; i < 10; ++i)
-    printf(" %d", ndigit[i]);
-  printf(", white space = %d, other = %d\n", nwhite, nother);
+    printf("digits =");
+    for (int i = 0; i < 10; ++i)
+      printf(" %d", ndigit[i]);
+    printf(", white space = %d, other = %d\n", nwhite, nother);
 
-}
+  }
 ```
 
 While this program might seem arbitrary for it's use, it does however highlight various aspects of C within this single program.
@@ -38,7 +38,7 @@ The output of the above program (ran against itself) is:
 ```
 
 The declaration:
-```
+```c
   int ndigit[10]
 ```
 
@@ -47,12 +47,12 @@ Declares `ndigit` to an array of `10` integers. Array subscripts (elements) alwa
 For the declared `ndigit` array, any subscript (element) can be any integer expression, which includes integer variables (such as `i`), and integer constants.
 
 The sample program relies on the properties of the character representation of the digits. An example of this is the conditional test:
-```
+```c
   if (c >= '0' && c <= '9')
 ```
 
 Determines whether the character value of `c` is a digit. If so, the numeric value of the digit is:
-```
+```c
   c - '0'
 ```
 

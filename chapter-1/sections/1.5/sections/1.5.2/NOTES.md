@@ -1,19 +1,19 @@
 ## 1.5.2 Character Counting
 
 Here is an example of a program that *counts* characters, somewhat similar to the copy program:
-```
-#include <stdio.h>
+```c
+  #include <stdio.h>
 
-/* count characters in input; 1st version */
-int main(void) {
-  long nc;
+  /* count characters in input; 1st version */
+  int main(void) {
+    long nc;
 
-  nc = 0;
-  while (getchar() != EOF) {
-    ++nc;
-    printf("%ld\n", nc);
+    nc = 0;
+    while (getchar() != EOF) {
+      ++nc;
+      printf("%ld\n", nc);
+    }
   }
-}
 ```
 
 The statement `++nc` uses the `++` operator, which means to *increment by 1*.
@@ -29,17 +29,17 @@ In the counting program, the count is accumulated into a `long` variable (`nc`) 
 The conversion specification `%ld` tells `printf` that the corresponding argument is a `long` integer.
 
 Another example of the counting program can be written with a `for` loop:
-```
-#include <stdio.h>
+```c
+  #include <stdio.h>
 
-/* count characters in input; 2nd version */
-int main(void) {
-  double nc;
+  /* count characters in input; 2nd version */
+  int main(void) {
+    double nc;
 
-  for (nc = 0; getchar() != EOF; ++nc)
-    ;
-  printf("%.0f\n", nc);
-}
+    for (nc = 0; getchar() != EOF; ++nc)
+      ;
+    printf("%.0f\n", nc);
+  }
 ```
 
 Note that `printf` uses `%f` for both `float` and `double`. `%.0f` suppresses printing of the decimal point and the fraction part, which is zero.
