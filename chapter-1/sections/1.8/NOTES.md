@@ -33,7 +33,7 @@ When `i` is passed to both `power` calls, the value of `i` is the passed argumen
   printf("%d %d %d\n", i, power(2, 3), power(-3, 3));
 ```
 
-Which means, an manipulation made within `power` of the passed `n` parameters, in this case `i`, will not affect `i` within `main`. The manipulation only happens locally within `power`, due to the function having its own local/temporary copy of the variable, having no affect on the original.
+Which means, any manipulation made within `power` to the passed `n` parameters, in this case `i`, will not effect the `i` variable within `main`. The manipulation only happens locally within `power`, due to the function having its own local/temporary copy of the variable, having no affect on the original.
 
 > Call by value is an asset, however, not a liability. It usually leads to more compact programs with fewer extraneous variables, because parameters can be treated as conveniently initialized local variables in the called routine.
 
