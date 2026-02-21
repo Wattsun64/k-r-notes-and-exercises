@@ -6,65 +6,47 @@
  */
 
 #define MAXLINE 1000
-#define INITIALIZED 1
 
-int zinit(char s[], int size) {
-  for (int i = 0; i < size; i++)
+void zinit(char s[], int limit) {
+  for (int i = 0; i < limit; i++)
     s[i] = 0;
-  return INITIALIZED;
 }
 
 int gline(char s[], int limit) {
   int i, c;
+
   for (i = 0; i < limit && (c = getchar()) != EOF && c != '\n'; i++)
     s[i] = c;
 
-  if (c == '\n') {
-    s[i] = c;
-    ++i;
-  }
+  if (c == '\n')
+    s[i++] = c;
 
   s[i] = '\0';
 
   return i;
 }
 
-int sanitize(char to[], char from[]) {
-  int i, j, c, buffer, spaces, next;
-  i = j = 0;
-  while ((c = from[i++]) != '\n') {
-    if (c == ' ' || c == '\t')
-      ++spaces;
+int remove_trail(char s[], int size) {
+  int i, c;
 
-    if ((c >= '!' && c <= '~') || c == '\n') {
-      to[j++] = c;
-      spaces = 0;
-    }
+  i = 0;
+  while ((c = s[--size]) > 0)
+    if (c >= '!' && c <= '~')
+      break;
+  if (size > 0)
+    s[++size] = '\0';
 
-    if (spaces == 1)
-      to[j++] = ' ';
-  }
-
-  if (j > 0)
-    to[j] = '\0';
-
-  return j;
+  return size;
 }
 
 int main(void) {
-  char chars[1000], dest[1000];
-  int line, limit, nlimit;
-
-  zinit(chars, MAXLINE);
-  zinit(dest, MAXLINE);
-
-  nlimit = 0;
-
-  while ((line = gline(chars, MAXLINE)) > 0) {
-    nlimit = sanitize(dest, chars);
-    if (nlimit > 0)
-      printf("%s\n", dest);
+  char input[MAXLINE];
+  int line, nline;
+  zinit(input, MAXLINE);
+  while ((line = gline(input, MAXLINE)) > 0) {
+    nline = remove_trail(input, line);
+    if (nline > 0)
+      printf("%s\n", input);
   }
-
   return 0;
 }
