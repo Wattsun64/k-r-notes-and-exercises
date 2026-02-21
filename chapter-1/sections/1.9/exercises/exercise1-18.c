@@ -29,10 +29,9 @@ int gline(char s[], int limit) {
 int remove_trail(char s[], int size) {
   int c;
   while (size > 0) {
-    c = s[size];
+    c = s[--size];
     if (c >= '!' && c <= '~')
       break;
-    --size;
   }
 
   if (size > 0) {
