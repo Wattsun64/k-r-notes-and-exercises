@@ -27,14 +27,18 @@ int gline(char s[], int limit) {
 }
 
 int remove_trail(char s[], int size) {
-  int i, c;
-
-  i = 0;
-  while ((c = s[--size]) > 0)
+  int c;
+  while (size > 0) {
+    c = s[size];
     if (c >= '!' && c <= '~')
       break;
-  if (size > 0)
+    --size;
+  }
+
+  if (size > 0) {
+    s[++size] = '\n';
     s[++size] = '\0';
+  }
 
   return size;
 }
@@ -46,7 +50,7 @@ int main(void) {
   while ((line = gline(input, MAXLINE)) > 0) {
     nline = remove_trail(input, line);
     if (nline > 0)
-      printf("%s\n", input);
+      printf("%s", input);
   }
   return 0;
 }
