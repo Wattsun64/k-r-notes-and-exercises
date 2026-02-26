@@ -20,7 +20,7 @@ The intent with `short` and `long` is to provide different ***lengths*** of inte
 
 Each compiler has the ability to choose appropriate sizes for its own hardware, subject only to the restriction that `short` and `int` are *at least* 16 bits, where `long` is normally 32 bits, and a `short` is no longer than an `int`, which is no longer than `long`.
 
-The qualifiers `signed` and `unsigned` can be applied to `char` or any integer (i.e. `int`, `short`, `long`). `unsigned` numbers are *always* positive or zero (i.e. 0-255), and obey the laws of arithmetic modulo $\2^n$, where `n` is the number of bits in the type.
+The qualifiers `signed` and `unsigned` can be applied to `char` or any integer (i.e. `int`, `short`, `long`). `unsigned` numbers are *always* positive or zero (i.e. 0-255), and obey the laws of arithmetic modulo $2^n$, where `n` is the number of bits in the type.
 
 An example of the above would be if `char` are 8 bits, `unsigned char` variables are between -128 and 127 (in a two's compliment machine). Whether plain `char` are `signed` or `unsigned` is machine-dependent, but *printable* characters are ***always*** positive.
 
